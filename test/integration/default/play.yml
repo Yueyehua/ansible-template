@@ -1,4 +1,4 @@
 ---
 - hosts: localhost
   roles:
-    - ansible_template
+    - ansible-template
