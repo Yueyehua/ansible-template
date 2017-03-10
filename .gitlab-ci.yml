@@ -1,0 +1,31 @@
+image: yueyehua/debian-kitchen
+
+before_script:
+  - pip3 install -U distribute
+
+ansible-lint:
+  script:
+    - ansible-lint .
+
+yaml-lint:
+  script:
+    - yaml-lint -i .
+
+lines_length:
+  script:
+    - >
+      bash <(curl -s
+      https://gitlab.com/yue-script/checks/raw/master/check_lines_length.sh)
+      80 templates/*
+
+git_history:
+  script:
+    - >
+      bash <(curl -s
+      https://gitlab.com/yue-script/checks/raw/master/check_git_history.sh)
+
+kitchen:
+  tags:
+    - docker
+  script:
+    - kitchen test -c -d always

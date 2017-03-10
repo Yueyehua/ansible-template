@@ -1,0 +1,8 @@
+---
+- name: 'Copy the test file to /tmp'
+  copy:
+    src: "test_file"
+    dest: '/tmp/test'
+    owner: 'root'
+    group: 'root'
+    mode: '0755'
